@@ -41,10 +41,10 @@ def create_task(payload: TaskCreateSchema) -> TaskSchema:
 
 @app.post("/book")
 def add_book(payload:BookSchema):
-    new_book = payload
+
     books.append(payload.book)
-    return new_book
+    return payload
 
 @app.get("/book")
 def read_book():
-    return f" Любимая книга {books[::-1]}"
+    return f" Любимая книга {books[-1]}" if books else "Книг пока нет"
