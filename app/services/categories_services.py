@@ -17,7 +17,7 @@ class CategoriesService:
         self.db = db
         self.categories_repository = CategoriesRepository(db)
 
-    def lists_categories(self):
+    def lists_categories(self) -> list[CategorySchema]:
         categories_orm = self.categories_repository.get_all()
         return [CategorySchema.model_validate(category) for category in categories_orm]
 
